@@ -7,8 +7,8 @@ An option valuation webapp in Python.
 
 Clone this repository :
 
-	git clone https://github.com/romaincaraes/option-valuation
-	cd option-valuation
+	git clone https://github.com/romaincaraes/option-valuation-python
+	cd option-valuation-python
 	
 You may want to use a virtual environment to keep a clean Python installation :
 
@@ -38,12 +38,12 @@ A new tab should open in your browser :
 
 ### Dependencies
 
-All the Python packages needed are listed in [requirements.txt](https://github.com/romaincaraes/option-valuation/blob/master/requirements.txt) and on the [Dependency Graph page](https://github.com/romaincaraes/option-valuation/network/dependencies).
+All the Python packages needed are listed in [requirements.txt](https://github.com/romaincaraes/option-valuation-python/blob/master/requirements.txt) and on the [Dependency Graph page](https://github.com/romaincaraes/option-valuation-python/network/dependencies).
 
 
 ### License
 
-This project is licensed under the [MIT License](https://github.com/romaincaraes/option-valuation/blob/master/LICENSE).
+This project is licensed under the [MIT License](https://github.com/romaincaraes/option-valuation-python/blob/master/LICENSE).
 
 
 ### Authors
@@ -52,4 +52,4 @@ This project is licensed under the [MIT License](https://github.com/romaincaraes
 	- Email : [hello@romaincaraes.fr](mailto:hello@romaincaraes.fr)
 	- Twitter : [@romaincaraes](https://twitter.com/romaincaraes)
 
-See also the [GitHub Contributors page](https://github.com/romaincaraes/option-valuation/graphs/contributors).
+See also the [GitHub Contributors page](https://github.com/romaincaraes/option-valuation-python/graphs/contributors).
