@@ -102,6 +102,11 @@ class Call(Option) :
         Option.__init__(self, ul_asset, type, strike, expiry, style)
         self.type = "call"
 
+class Put(Option) :
+    def __init__(self, ul_asset, strike, expiry, style) :
+        Option.__init__(self, ul_asset, type, strike, expiry, style)
+        self.type = "put"
+    
 def main() :
     pass
 
