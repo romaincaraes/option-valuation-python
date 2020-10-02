@@ -6,7 +6,7 @@ import option
 import pandas as pd
 import streamlit as st
 
-model = st.sidebar.selectbox("Model", ["Black & Scholes"])
+model = st.sidebar.selectbox("Model", ["Binomial", "Black & Scholes", "Monte Carlo"])
 
 def user_input_features() :
     st.sidebar.header("Option")
