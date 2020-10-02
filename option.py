@@ -96,6 +96,11 @@ class Option() :
             "rho" : self.get_rho(spot, riskfree, dividend, volatility)
         }
         return greeks
+    
+class Call(Option) :
+    def __init__(self, ul_asset, strike, expiry, style) :
+        Option.__init__(self, ul_asset, type, strike, expiry, style)
+        self.type = "call"
 
 def main() :
     pass
