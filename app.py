@@ -6,7 +6,8 @@ import option
 import pandas as pd
 import streamlit as st
 
-model = st.sidebar.selectbox("Model", ["Binomial", "Black & Scholes", "Monte Carlo"])
+model = {1:"Binomial", 2:"Black & Scholes", 3:"Monte Carlo"}
+model = st.sidebar.selectbox("Model", list(model.keys()), 1, lambda x: model[x])
 
 def user_input_features() :
     st.sidebar.header("Option")
@@ -52,8 +53,8 @@ option = option.Option(
 
 st.subheader("Output")
 payoff = {"payoff" : float(option.get_payoff(spot))}
-value = {"value" : float(option.get_value(spot, riskfree, 0.0, volatility))}
+price = {"price" : float(option.get_price(model, spot, riskfree, 0.0, volatility))}
 greeks = option.get_greeks(spot, riskfree, 0.0, volatility)
-output = {**payoff, **value, **greeks}
+output = {**payoff, **price, **greeks}
 df = pd.DataFrame(output, index=[0])
 st.write(df)
