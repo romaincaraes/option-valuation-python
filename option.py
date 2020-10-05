@@ -5,9 +5,9 @@ import time, datetime
 import numpy as np
 import pandas as pd
 import scipy.stats as sp
-from models import binomial as bn
-from models import blackscholes as bs
-from models import montecarlo as mc
+import models.binomial as bn
+import models.blackscholes as bs
+import models.montecarlo as mc
 
 class Option() :
     def __init__(self, ul_asset, type, strike, expiry, style="EU") :
