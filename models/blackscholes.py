@@ -11,7 +11,7 @@ def d1(option, spot, riskfree, dividend, volatility) :
 
 def d2(option, spot, riskfree, dividend, volatility) :
     t = option.days_to_expiry()/365
-    d2 = option.d1(spot, riskfree, dividend, volatility) - volatility * np.sqrt(t)
+    d2 = d1(option, spot, riskfree, dividend, volatility) - volatility * np.sqrt(t)
     return d2
 
 def price(option, spot, riskfree, dividend, volatility) :
