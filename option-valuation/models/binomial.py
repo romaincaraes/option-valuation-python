@@ -2,7 +2,6 @@
 #coding: utf-8
 
 import numpy as np
-import scipy.stats as sp
 
 def up(volatility, duration) :
     u = np.exp(volatility * np.sqrt(duration))
