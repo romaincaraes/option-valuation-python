@@ -7,6 +7,9 @@ import scipy.stats as sp
 
 def up() :
     return
+    
+def down() :
+    return
 
 def tree(nodes) :
     return
