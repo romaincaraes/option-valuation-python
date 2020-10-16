@@ -5,8 +5,9 @@ import numpy as np
 import scipy.stats as sp
 
 
-def up() :
-    return
+def up(volatility, duration) :
+    u = np.exp(volatility * np.sqrt(duration))
+    return u
     
 def down() :
     return
