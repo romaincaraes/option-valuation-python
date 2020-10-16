@@ -4,7 +4,11 @@
 import numpy as np
 import scipy.stats as sp
 
-def tree() :
+
+def up() :
+    return
+
+def tree(nodes) :
     return
 
 def price(option, spot, riskfree, dividend, volatility) :
