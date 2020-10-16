@@ -13,7 +13,6 @@ def down(volatility, duration) :
     d = np.exp(-volatility * np.sqrt(duration))
     return d
     
-
 def tree(nodes) :
     return
 
