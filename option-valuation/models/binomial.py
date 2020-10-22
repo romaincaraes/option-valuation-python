@@ -12,7 +12,8 @@ def down(volatility, duration) :
     return d
 
 def price(option, spot, riskfree, dividend, volatility) :
-    dt = (option.days_to_expiry()/365) / 4
+    steps = 4
+    dt = (option.days_to_expiry()/365) / steps
     
     u = up(volatility, dt)
     d = down(volatility, dt)
