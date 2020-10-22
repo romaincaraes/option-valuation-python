@@ -114,7 +114,7 @@ def user_input_features() :
 
     st.sidebar.header("Market")
     riskfree = st.sidebar.slider(label="Riskfree Rate", min_value=0.0, max_value=10.0, value=1.0, step=0.05)
-    volatility = st.sidebar.slider(label="Implied Volatility", min_value=0.0, max_value=1.0, value=0.2, step=0.01)
+    volatility = st.sidebar.slider(label="Implied Volatility", min_value=0.0, max_value=1.0, value=0.2, step=0.0005)
 
     data = {
         "type" : type.lower(),
