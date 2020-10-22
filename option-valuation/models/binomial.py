@@ -14,16 +14,16 @@ def down(volatility, duration) :
 def price(option, spot, riskfree, dividend, volatility) :
     steps = 4
     dt = option.days_to_expiry() / (365 * steps)
-    
+
     u = up(volatility, dt)
     d = down(volatility, dt)
-    
+
     p = (np.exp(riskfree * dt) - d) / (u - d)
-    
+
     ul_price = np.zeros([steps + 1, steps + 1])
     option_price = np.zeros([steps + 1, steps + 1])
 
-    return option_price[0,0]
+    return option_price[0, 0]
 
 def main() :
     pass
