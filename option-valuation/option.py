@@ -110,7 +110,7 @@ def user_input_features() :
     spot = st.sidebar.number_input(label="Spot", min_value=0.0, value=1.1850, step=0.0005, format="%.4f")
     strike = st.sidebar.number_input(label="Strike", min_value=0.0, value=1.1650, step=0.0005, format="%.4f")
     expiry = st.sidebar.date_input(label="Expiry", value=datetime.date(2020, 12, 31))
-    style = st.sidebar.selectbox(label="Style", options=["EU", "US"], index=1)
+    style = st.sidebar.selectbox(label="Style", options=["EU", "US"], index=0)
 
     st.sidebar.header("Market")
     riskfree = st.sidebar.slider(label="Riskfree Rate", min_value=0.0, max_value=10.0, value=1.0, step=0.05)
