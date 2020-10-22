@@ -28,6 +28,11 @@ def price(option, spot, riskfree, dividend, volatility) :
             ul_price[i, j] = ul_price[i - 1, j - 1] * d
 
     option_price = np.zeros([steps + 1, steps + 1])
+    for j in range(steps + 1) :
+        if option.type == "call" :
+            option_price[steps, j] = max(0, ul_price[steps, j] - option.strike)
+        elif option.type == "put" :
+            option_price[steps, j] = max(0, option.strike - ul_price[steps, j])
 
     return option_price[0, 0]
 
