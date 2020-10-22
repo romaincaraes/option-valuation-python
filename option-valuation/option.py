@@ -99,22 +99,22 @@ class Put(Option) :
     def __init__(self, ul_asset, strike, expiry, style) :
         Option.__init__(self, ul_asset, type, strike, expiry, style)
         self.type = "put"
-        
+
 model = {1:"Binomial", 2:"Black & Scholes", 3:"Monte Carlo"}
-model = st.sidebar.selectbox("Model", list(model.keys()), 1, lambda x: model[x])
+model = st.sidebar.selectbox(label="Model", options=list(model.keys()), index=1, format_func=lambda x: model[x])
 
 def user_input_features() :
     st.sidebar.header("Option")
-    type = st.sidebar.selectbox("Type", ["Call", "Put"])
-    ul_asset = st.sidebar.text_input("Underlying Asset", "EURUSD")
-    spot = st.sidebar.number_input("Spot", 0.0000, 2.0000, 1.1850, step=0.0005, format="%.4f")
-    strike = st.sidebar.number_input("Strike", 0.0000, 2.0000, 1.1650, step=0.0005, format="%.4f")
-    expiry = st.sidebar.date_input("Expiry", datetime.date(2020, 12, 31))
-    style = st.sidebar.selectbox("Style", ["EU"])
-    
+    type = st.sidebar.selectbox(label="Type", options=["Call", "Put"])
+    ul_asset = st.sidebar.text_input(label="Underlying Asset", value="EURUSD")
+    spot = st.sidebar.number_input(label="Spot", min_value=0.0, value=1.1850, step=0.0005, format="%.4f")
+    strike = st.sidebar.number_input(label="Strike", min_value=0.0, value=1.1650, step=0.0005, format="%.4f")
+    expiry = st.sidebar.date_input(label="Expiry", value=datetime.date(2020, 12, 31))
+    style = st.sidebar.selectbox(label="Style", options=["EU", "US"], index=1)
+
     st.sidebar.header("Market")
-    riskfree = st.sidebar.slider("Riskfree Rate", 0.00, 10.00, 1.00, step=0.05)
-    volatility = st.sidebar.slider("Implied Volatility", 0.00, 1.00, 0.20, step=0.01)
+    riskfree = st.sidebar.slider(label="Riskfree Rate", min_value=0.0, max_value=10.0, value=1.0, step=0.05)
+    volatility = st.sidebar.slider(label="Implied Volatility", min_value=0.0, max_value=1.0, value=0.2, step=0.01)
 
     data = {
         "type" : type.lower(),
@@ -152,7 +152,7 @@ greeks = option.get_greeks(spot, riskfree, 0.0, volatility)
 output = {**payoff, **price, **greeks}
 df = pd.DataFrame(output, index=[0])
 st.write(df)
-    
+
 def main() :
     pass
 
