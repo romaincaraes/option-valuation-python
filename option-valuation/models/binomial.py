@@ -10,9 +10,6 @@ def up(volatility, duration) :
 def down(volatility, duration) :
     d = np.exp(-volatility * np.sqrt(duration))
     return d
-    
-def tree(nodes) :
-    return
 
 def price(option, spot, riskfree, dividend, volatility) :
     return 0
