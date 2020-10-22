@@ -23,7 +23,7 @@ def price(option, spot, riskfree, dividend, volatility) :
     ul_price = np.zeros([steps + 1, steps + 1])
     option_price = np.zeros([steps + 1, steps + 1])
                     
-    return 0
+    return option_price[0,0]
 
 def main() :
     pass
