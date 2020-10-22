@@ -19,6 +19,10 @@ def price(option, spot, riskfree, dividend, volatility) :
     d = down(volatility, dt)
     
     p = (np.exp(riskfree * dt) - d) / (u - d)
+    
+    ul_price = np.zeros([steps + 1, steps + 1])
+    option_price = np.zeros([steps + 1, steps + 1])
+                    
     return 0
 
 def main() :
