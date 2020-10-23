@@ -30,7 +30,7 @@ class Option() :
         elif (self.type == "put") :
             payoff = np.maximum(0, self.strike - spot)
         return payoff
-    
+
     def get_price(self, model, spot, riskfree, dividend, volatility) :
         price = {
             1 : bn.price(self, spot, riskfree, dividend, volatility),
