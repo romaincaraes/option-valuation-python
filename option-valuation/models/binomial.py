@@ -34,6 +34,10 @@ def price(option, spot, riskfree, dividend, volatility) :
         elif option.type == "put" :
             option_price[steps, j] = max(0, option.strike - ul_price[steps, j])
 
+    for i in range(steps)[::-1] :
+        for j in range(i + 1) :
+            option_price[i, j] = np.exp(-riskfree * dt) * (p * option_price[i + 1, j] + q * option_price[i + 1, j + 1])
+
     return option_price[0, 0]
 
 def main() :
