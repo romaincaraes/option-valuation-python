@@ -27,9 +27,10 @@ Install the required dependencies :
 	
 ### Usage
 
-To use the Option Valuation web app, run the __app.py__ script : 
+To use the Option Valuation web app, run the __option.py__ script in __option-valuation/__ folder : 
 
-	streamlit run app.py
+	cd option-valuation
+	streamlit run option.py
 
 A new tab should open in your browser :
 
