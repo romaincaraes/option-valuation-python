@@ -37,7 +37,8 @@ def price(option, spot, riskfree, dividend, volatility) :
 
     for i in range(steps)[::-1] :
         for j in range(i + 1) :
-            option_price[i, j] = np.exp(-riskfree * dt) * (p * option_price[i + 1, j] + q * option_price[i + 1, j + 1])
+            if option.style == "EU" :
+                option_price[i, j] = np.exp(-riskfree * dt) * (p * option_price[i + 1, j] + q * option_price[i + 1, j + 1])
 
     return option_price[0, 0]
 
