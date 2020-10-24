@@ -39,6 +39,11 @@ def price(option, spot, riskfree, dividend, volatility) :
         for j in range(i + 1) :
             if option.style == "EU" :
                 option_price[i, j] = np.exp(-riskfree * dt) * (p * option_price[i + 1, j] + q * option_price[i + 1, j + 1])
+            elif option.style == "US" :
+                if option.type == "call" :
+                    option_price[i, j] = max(ul_price[i, j] - option.strike, np.exp(-riskfree * dt) * (p * option_price[i + 1, j] + q * option_price[i + 1, j + 1])) 
+                elif option.type == "put" :
+                    option_price[i, j] = max(option.strike - ul_price[i, j], np.exp(-riskfree * dt) * (p * option_price[i + 1, j] + q * option_price[i + 1, j + 1]))
 
     return option_price[0, 0]
 
