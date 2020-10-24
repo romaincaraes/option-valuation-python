@@ -17,6 +17,12 @@ def probability_u(volatility, duration, riskfree) :
     probability_u = (np.exp(riskfree * duration) - d) / (u - d)
     return probability_u
 
+def probability_d(volatility, duration, riskfree) :
+    u = up(volatility, duration)
+    d = down(volatility, duration)
+    probability_d = (np.exp(-riskfree * duration) - d) / (u - d)
+    return probability_d
+
 def price(option, spot, riskfree, dividend, volatility) :
     steps = 4
     dt = option.days_to_expiry() / (365 * steps)
@@ -25,7 +31,7 @@ def price(option, spot, riskfree, dividend, volatility) :
     d = down(volatility, dt)
 
     p = probability_u(volatility, dt, riskfree)
-    q = 1 - p
+    q = probability_d(volatility, dt, riskfree)
 
     ul_price = np.zeros([steps + 1, steps + 1])
     ul_price[0, 0] = spot
