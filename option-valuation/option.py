@@ -130,7 +130,7 @@ def user_input_features() :
     features = pd.DataFrame(data, index=[0])
     return features
 
-st.subheader("User Input Parameters")    
+st.subheader("User Input Parameters")
 features = user_input_features()
 st.write(features)
 
