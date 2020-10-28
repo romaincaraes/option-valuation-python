@@ -142,9 +142,12 @@ def user_input_features() :
     features = pd.DataFrame(data, index=[0])
     return features
 
-st.subheader("User Input Parameters")
+st.header("User Input Parameters")
+st.subheader("Option")
 features = user_input_features()
-st.write(features)
+st.write(features[['type', 'ul_asset', 'strike', 'spot', 'expiry', 'style']])
+st.subheader("Market")
+st.write(features[['riskfree', 'dividend', 'volatility']])
 
 spot = features['spot'][0]
 riskfree = features['riskfree'][0]
@@ -159,7 +162,7 @@ option = Option(
     style=features['style'][0]
 )
 
-st.subheader("Output")
+st.header("Output")
 payoff = {"payoff" : float(option.get_payoff(spot=spot))}
 price = {"price" : float(option.get_price(model=model, spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility))}
 greeks = option.get_greeks(spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility)
