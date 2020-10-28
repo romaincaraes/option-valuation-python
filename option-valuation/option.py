@@ -104,6 +104,16 @@ class Put(Option) :
 model = {1:"Binomial", 2:"Black & Scholes", 3:"Monte Carlo"}
 model = st.sidebar.selectbox(label="Model", options=list(model.keys()), index=1, format_func=lambda x: model[x])
 
+if (model == 1) : # Binomial
+    st.sidebar.header("Model Parameters")
+    steps = st.sidebar.number_input(label="Steps", min_value=1, value=4)
+elif (model == 2) : # Black & Scholes
+    pass
+elif (model == 3) : # Monte Carlo
+    st.sidebar.header("Model Parameters")
+    steps = st.sidebar.number_input(label="Steps", min_value=1, value=100)
+    simulations = st.sidebar.number_input(label="Simulations", min_value=1, max_value=100000, value=100000)
+
 def user_input_features() :
     st.sidebar.header("Option")
     type = st.sidebar.selectbox(label="Type", options=["Call", "Put"])
