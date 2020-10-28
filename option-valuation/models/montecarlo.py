@@ -4,7 +4,7 @@
 import numpy as np
 import scipy.stats as sp
 
-def price(option, spot, riskfree, dividend, volatility) :
+def price(option, spot, riskfree, dividend, volatility, steps=100, simulations=100000) :
     return 0
 
 def main() :
