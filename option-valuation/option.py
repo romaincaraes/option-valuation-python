@@ -32,11 +32,12 @@ class Option() :
         return payoff
 
     def get_price(self, model, spot, riskfree, dividend, volatility) :
-        price = {
-            1 : bn.price(self, spot, riskfree, dividend, volatility),
-            2 : bs.price(self, spot, riskfree, dividend, volatility),
-            3 : mc.price(self, spot, riskfree, dividend, volatility)
-        }.get(model)
+        if (model == 1) :
+            price = bn.price(self, spot, riskfree, dividend, volatility)
+        elif (model == 2) :
+            price = bs.price(self, spot, riskfree, dividend, volatility)
+        elif (model == 3) : 
+            price = mc.price(self, spot, riskfree, dividend, volatility)
         return price
 
     def snpdf(self, spot, riskfree, dividend, volatility) :
