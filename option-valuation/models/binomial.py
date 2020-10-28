@@ -23,8 +23,7 @@ def probability_d(volatility, duration, riskfree) :
     probability_d = (np.exp(-riskfree * duration) - d) / (u - d)
     return probability_d
 
-def price(option, spot, riskfree, dividend, volatility) :
-    steps = 4
+def price(option, spot, riskfree, dividend, volatility, steps=4) :
     dt = option.days_to_expiry() / (365 * steps)
 
     u = up(volatility, dt)
