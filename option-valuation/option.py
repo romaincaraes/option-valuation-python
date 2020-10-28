@@ -115,6 +115,7 @@ def user_input_features() :
 
     st.sidebar.header("Market")
     riskfree = st.sidebar.slider(label="Riskfree Rate", min_value=0.0, max_value=10.0, value=1.0, step=0.05)
+    dividend = st.sidebar.number_input(label="Dividend", min_value=0.0, value=0.0)
     volatility = st.sidebar.slider(label="Implied Volatility", min_value=0.0, max_value=1.0, value=0.2, step=0.0005)
 
     data = {
@@ -125,6 +126,7 @@ def user_input_features() :
         "expiry" : expiry.strftime("%Y-%m-%d"),
         "style" : style,
         "riskfree" : riskfree,
+        "dividend" : dividend,
         "volatility" : volatility
     }
     features = pd.DataFrame(data, index=[0])
@@ -136,6 +138,7 @@ st.write(features)
 
 spot = features['spot'][0]
 riskfree = features['riskfree'][0]
+dividend = features['dividend'][0]
 volatility = features['volatility'][0]
 
 option = Option(
@@ -148,8 +151,8 @@ option = Option(
 
 st.subheader("Output")
 payoff = {"payoff" : float(option.get_payoff(spot=spot))}
-price = {"price" : float(option.get_price(model=model, spot=spot, riskfree=riskfree, dividend=0.0, volatility=volatility))}
-greeks = option.get_greeks(spot=spot, riskfree=riskfree, dividend=0.0, volatility=volatility)
+price = {"price" : float(option.get_price(model=model, spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility))}
+greeks = option.get_greeks(spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility)
 output = {**payoff, **price, **greeks}
 df = pd.DataFrame(output, index=[0])
 st.write(df)
