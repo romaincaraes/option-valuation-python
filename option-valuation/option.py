@@ -147,9 +147,9 @@ option = Option(
 )
 
 st.subheader("Output")
-payoff = {"payoff" : float(option.get_payoff(spot))}
-price = {"price" : float(option.get_price(model, spot, riskfree, 0.0, volatility))}
-greeks = option.get_greeks(spot, riskfree, 0.0, volatility)
+payoff = {"payoff" : float(option.get_payoff(spot=spot))}
+price = {"price" : float(option.get_price(model=model, spot=spot, riskfree=riskfree, dividend=0.0, volatility=volatility))}
+greeks = option.get_greeks(spot=spot, riskfree=riskfree, dividend=0.0, volatility=volatility)
 output = {**payoff, **price, **greeks}
 df = pd.DataFrame(output, index=[0])
 st.write(df)
