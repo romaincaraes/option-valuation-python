@@ -31,13 +31,13 @@ class Option() :
             payoff = np.maximum(0, self.strike - spot)
         return payoff
 
-    def get_price(self, model, spot, riskfree, dividend, volatility) :
+    def get_price(self, model, **kwargs) :
         if (model == 1) :
-            price = bn.price(self, spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility)
+            price = bn.price(self, spot=kwargs['spot'], riskfree=kwargs['riskfree'], dividend=kwargs['dividend'], volatility=kwargs['volatility'], steps=kwargs['steps'])
         elif (model == 2) :
-            price = bs.price(self, spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility)
+            price = bs.price(self, spot=kwargs['spot'], riskfree=kwargs['riskfree'], dividend=kwargs['dividend'], volatility=kwargs['volatility'])
         elif (model == 3) : 
-            price = mc.price(self, spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility)
+            price = mc.price(self, spot=kwargs['spot'], riskfree=kwargs['riskfree'], dividend=kwargs['dividend'], volatility=kwargs['volatility'], steps=kwargs['steps'], simulations=kwargs['simulations'])
         return price
 
     def snpdf(self, spot, riskfree, dividend, volatility) :
@@ -107,8 +107,10 @@ model = st.sidebar.selectbox(label="Model", options=list(model.keys()), index=1,
 if (model == 1) : # Binomial
     st.sidebar.header("Model Parameters")
     steps = st.sidebar.number_input(label="Steps", min_value=1, value=4)
+    simulations = 0
 elif (model == 2) : # Black & Scholes
-    pass
+    steps = 0
+    simulations = 0
 elif (model == 3) : # Monte Carlo
     st.sidebar.header("Model Parameters")
     steps = st.sidebar.number_input(label="Steps", min_value=1, value=100)
@@ -164,7 +166,7 @@ option = Option(
 
 st.header("Output")
 payoff = {"payoff" : float(option.get_payoff(spot=spot))}
-price = {"price" : float(option.get_price(model=model, spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility))}
+price = {"price" : float(option.get_price(model=model, spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility, steps=steps, simulations=simulations))}
 greeks = option.get_greeks(spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility)
 output = {**payoff, **price, **greeks}
 df = pd.DataFrame(output, index=[0])
