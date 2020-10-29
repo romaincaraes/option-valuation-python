@@ -46,7 +46,7 @@ class Option() :
 
     def get_delta(self, spot, riskfree, dividend, volatility) :
         cdf = sp.norm(0, 1).cdf
-        t = self.days_to_expiry()/365
+        t = self.days_to_expiry() / 365
         if (self.type == "call") :
             delta = np.exp(-dividend * t) * cdf(bs.d1(self, spot, riskfree, dividend, volatility))
         elif (self.type == "put") :
