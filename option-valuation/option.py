@@ -48,33 +48,33 @@ class Option() :
         cdf = sp.norm(0, 1).cdf
         t = self.days_to_expiry()/365
         if (self.type == "call") :
-            delta =  np.exp(-dividend * t) * cdf(bs.d1(self, spot, riskfree, dividend, volatility))
+            delta = np.exp(-dividend * t) * cdf(bs.d1(self, spot, riskfree, dividend, volatility))
         elif (self.type == "put") :
             delta = np.exp(-dividend * t) * (cdf(bs.d1(self, spot, riskfree, dividend, volatility)) - 1)
         return delta
 
     def get_gamma(self, spot, riskfree, dividend, volatility) :
-        t = self.days_to_expiry()/365
+        t = self.days_to_expiry() / 365
         gamma = (np.exp(-dividend * t) / (spot * volatility * np.sqrt(t))) * self.snpdf(spot, riskfree, dividend, volatility)
         return gamma
 
     def get_vega(self, spot, riskfree, dividend, volatility) :
-        t = self.days_to_expiry()/365
-        vega =  (0.01 * spot * np.exp(-dividend * t) * np.sqrt(t)) * self.snpdf(spot, riskfree, dividend, volatility)
+        t = self.days_to_expiry() / 365
+        vega = (0.01 * spot * np.exp(-dividend * t) * np.sqrt(t)) * self.snpdf(spot, riskfree, dividend, volatility)
         return vega
 
     def get_theta(self, spot, riskfree, dividend, volatility) :
         cdf = sp.norm(0, 1).cdf
-        t = self.days_to_expiry()/365
+        t = self.days_to_expiry() / 365
         if (self.type == "call") :
-            theta = (-(((spot * volatility * np.exp(-dividend * t)) / (2 * np.sqrt(t))) * self.snpdf(spot, riskfree, dividend, volatility)) - (riskfree * self.strike * np.exp(-riskfree * t) * cdf(bs.d2(self, spot, riskfree, dividend, volatility))) + (dividend * spot * np.exp(-dividend * t) * cdf(bs.d1(self, spot, riskfree, dividend, volatility))))/365
+            theta = (-(((spot * volatility * np.exp(-dividend * t)) / (2 * np.sqrt(t))) * self.snpdf(spot, riskfree, dividend, volatility)) - (riskfree * self.strike * np.exp(-riskfree * t) * cdf(bs.d2(self, spot, riskfree, dividend, volatility))) + (dividend * spot * np.exp(-dividend * t) * cdf(bs.d1(self, spot, riskfree, dividend, volatility)))) / 365
         elif (self.type == "put") :
-            theta = (-(((spot * volatility * np.exp(-dividend * t)) / (2 * np.sqrt(t))) * self.snpdf(spot, riskfree, dividend, volatility)) + (riskfree * self.strike * np.exp(-riskfree * t) * cdf(-bs.d2(self, spot, riskfree, dividend, volatility))) - (dividend * spot * np.exp(-dividend * t) * cdf(-bs.d1(self, spot, riskfree, dividend, volatility))))/365
+            theta = (-(((spot * volatility * np.exp(-dividend * t)) / (2 * np.sqrt(t))) * self.snpdf(spot, riskfree, dividend, volatility)) + (riskfree * self.strike * np.exp(-riskfree * t) * cdf(-bs.d2(self, spot, riskfree, dividend, volatility))) - (dividend * spot * np.exp(-dividend * t) * cdf(-bs.d1(self, spot, riskfree, dividend, volatility)))) / 365
         return theta
 
     def get_rho(self, spot, riskfree, dividend, volatility) :
         cdf = sp.norm(0, 1).cdf
-        t = self.days_to_expiry()/365
+        t = self.days_to_expiry() / 365
         if (self.type == "call") :
             rho = 0.01 * self.strike * t * np.exp(-riskfree * t) * cdf(bs.d2(self, spot, riskfree, dividend, volatility))
         elif (self.type == "put") :
