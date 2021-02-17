@@ -172,6 +172,9 @@ output = {**payoff, **price, **greeks}
 df = pd.DataFrame(output, index=[0])
 st.write(df)
 
+def debug() :
+    return
+
 def main() :
     pass
 
