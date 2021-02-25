@@ -173,6 +173,26 @@ df = pd.DataFrame(output, index=[0])
 st.write(df)
 
 def debug() :
+    start = time.time()
+    spot = 100.
+
+    riskfree = .05
+    dividend = 0.
+    volatility = .2
+
+    c = Call("INDEX", 99., "2020-12-31", "EU")
+
+    p_bn = float(c.get_price(1, spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility, steps=4))
+    t_bn = time.time() - start
+    print(f"BN. {p_bn:.6f} ({t_bn:.6f} secs)")
+
+    p_bs = float(c.get_price(2, spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility))
+    t_bs = time.time() - start
+    print(f"BS. {p_bs:.6f} ({t_bs:.6f} secs)")
+
+    p_mc = float(c.get_price(3, spot=spot, riskfree=riskfree, dividend=dividend, volatility=volatility, steps=100, simulations=10000))
+    t_mc = time.time() - start
+    print(f"MC. {p_mc:.6f} ({t_mc:.6f} secs)")
     return
 
 def main() :
