@@ -126,7 +126,7 @@ def user_input_features():
     style = st.sidebar.selectbox(label="Style", options=["EU", "US"], index=0)
 
     st.sidebar.header("Market")
-    riskfree = st.sidebar.slider(label="Riskfree Rate", min_value=0.0, max_value=10.0, value=1.0, step=0.05)
+    riskfree = st.sidebar.slider(label="Riskfree Rate", min_value=0.0, max_value=1.0, value=.05, step=0.01)
     dividend = st.sidebar.number_input(label="Dividend", min_value=0.0, value=0.0)
     volatility = st.sidebar.slider(label="Implied Volatility", min_value=0.0, max_value=1.0, value=0.2, step=0.0005)
 
