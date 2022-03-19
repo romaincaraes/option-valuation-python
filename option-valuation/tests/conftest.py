@@ -53,3 +53,8 @@ def dividend():
 def volatility():
     volatility = random.random()
     return volatility
+
+@pytest.fixture
+def steps():
+    steps = random.randint(1,100)
+    return steps
