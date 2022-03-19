@@ -58,3 +58,8 @@ def volatility():
 def steps():
     steps = random.randint(1,100)
     return steps
+
+@pytest.fixture
+def simulations():
+    simulations = random.randint(1,1000000)
+    return simulations
