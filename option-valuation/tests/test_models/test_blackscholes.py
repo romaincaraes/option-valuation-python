@@ -10,3 +10,7 @@ def test_blackscholes_d1(call, put, spot, riskfree, dividend, volatility):
 def test_blackscholes_d2(call, put, spot, riskfree, dividend, volatility):
     assert bs.d2(call, spot, riskfree, dividend, volatility)
     assert bs.d2(put, spot, riskfree, dividend, volatility)
+
+def test_blackscholes_price(call, put, spot, riskfree, dividend, volatility):
+    assert bs.price(call, spot, riskfree, dividend, volatility)
+    assert bs.price(put, spot, riskfree, dividend, volatility)
