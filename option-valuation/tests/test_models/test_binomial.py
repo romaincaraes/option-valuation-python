@@ -8,3 +8,6 @@ def test_binomial_up(volatility, steps):
 
 def test_binomial_down(volatility, steps):
     assert bn.down(volatility, 60/(365*steps))
+
+def test_binomial_probability_u(volatility, riskfree, steps):
+    assert bn.probability_u(volatility, 60/(365*steps), riskfree)
