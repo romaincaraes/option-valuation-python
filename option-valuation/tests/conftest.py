@@ -25,6 +25,16 @@ def call():
     return call
 
 @pytest.fixture
+def put():
+    put = Put(
+        ul_asset="UL_ASSET",
+        strike=random.randint(0,10e12),
+        expiry=(datetime.datetime.now() + datetime.timedelta(days=random.randint(0,36500))).strftime("%Y-%m-%d"),
+        style="EU"
+    )
+    return put
+
+@pytest.fixture
 def spot(option):
     spot = option.strike + random.random() * random.choice((-1, 1))
     return spot
