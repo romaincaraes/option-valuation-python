@@ -4,9 +4,9 @@ An option valuation webapp in Python.
 
 ### Models
 
-- [Binomial (Cox, Ross & Rubinstein)](https://github.com/romaincaraes/option-valuation-python/blob/master/option-valuation/models/binomial.py),
-- [Black & Scholes](https://github.com/romaincaraes/option-valuation-python/blob/master/option-valuation/models/blackscholes.py),
-- [Monte Carlo](https://github.com/romaincaraes/option-valuation-python/blob/master/option-valuation/models/montecarlo.py)
+- [Binomial (Cox, Ross & Rubinstein)](https://github.com/romaincaraes/option-valuation-python/blob/master/option-valuation/models/binomial.md),
+- [Black & Scholes](https://github.com/romaincaraes/option-valuation-python/blob/master/option-valuation/models/blackscholes.md),
+- [Monte Carlo](https://github.com/romaincaraes/option-valuation-python/blob/master/option-valuation/models/montecarlo.md)
 
 
 ### Installation
