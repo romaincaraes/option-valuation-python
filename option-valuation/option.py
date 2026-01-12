@@ -122,7 +122,7 @@ def user_input_features():
     ul_asset = st.sidebar.text_input(label="Underlying Asset", value="EURUSD")
     spot = st.sidebar.number_input(label="Spot", min_value=0.0, value=1.1850, step=0.0005, format="%.4f")
     strike = st.sidebar.number_input(label="Strike", min_value=0.0, value=1.1650, step=0.0005, format="%.4f")
-    expiry = st.sidebar.date_input(label="Expiry", value=datetime.date(2022, 12, 31))
+    expiry = st.sidebar.date_input(label="Expiry", value=datetime.datetime.now()+datetime.timedelta(days=90))
     style = st.sidebar.selectbox(label="Style", options=["EU", "US"], index=0)
 
     st.sidebar.header("Market")
