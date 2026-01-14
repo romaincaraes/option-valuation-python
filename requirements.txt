@@ -6,9 +6,11 @@ certifi==2026.1.4
 charset-normalizer==3.4.4
 click==8.3.1
 colorama==0.4.6
+coverage==7.13.1
 gitdb==4.0.12
 GitPython==3.1.46
 idna==3.11
+iniconfig==2.3.0
 Jinja2==3.1.6
 jsonschema==4.26.0
 jsonschema-specifications==2025.9.1
@@ -18,9 +20,13 @@ numpy==2.4.1
 packaging==25.0
 pandas==2.3.3
 pillow==12.1.0
+pluggy==1.6.0
 protobuf==6.33.4
 pyarrow==22.0.0
 pydeck==0.9.1
+Pygments==2.19.2
+pytest==9.0.2
+pytest-cov==7.0.0
 python-dateutil==2.9.0.post0
 pytz==2025.2
 referencing==0.37.0
@@ -29,7 +35,7 @@ rpds-py==0.30.0
 scipy==1.17.0
 six==1.17.0
 smmap==5.0.2
-streamlit==1.52.2
+streamlit==1.53.0
 tenacity==9.1.2
 toml==0.10.2
 tornado==6.5.4
